@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Student Dashboard</h1>
-    <p>This page represents a student-level view.</p>
+    <div class="container">
+        <h1>Student Dashboard</h1>
+        <p>This page represents a student-level view.</p>
 
-    <h2>Active User</h2>
-    <ul>
-        <li><strong>Name:</strong> {{ user.full_name }}</li>
-        <li><strong>Username:</strong> {{ user.username }}</li>
-        <li><strong>Role:</strong> {{ user.role }}</li>
-        <li><strong>Department:</strong> {{ user.department }}</li>
-    </ul>
+        <div class="card">
+            <h2>Active User</h2>
+            <ul>
+                <li><strong>Name:</strong> {{ user.full_name }}</li>
+                <li><strong>Username:</strong> {{ user.username }}</li>
+                <li><strong>Role:</strong> {{ user.role }}</li>
+                <li><strong>Department:</strong> {{ user.department }}</li>
+            </ul>
+        </div>
 
-    <p>Access Level: Students can view their own records only.</p>
+        <div class="success">
+            Access Level: Students can view their own records only.
+        </div>
 
-    <a href="/">Return to Home</a>
+        <p><a href="/">Return to Home</a></p>
+    </div>
 </body>
 </html>
