@@ -12,13 +12,20 @@
         <p>This page represents a student-level view.</p>
 
         <div class="card">
-            <h2>Active User</h2>
-            <ul>
-                <li><strong>Name:</strong> {{ user.full_name }}</li>
-                <li><strong>Username:</strong> {{ user.username }}</li>
-                <li><strong>Role:</strong> {{ user.role }}</li>
-                <li><strong>Department:</strong> {{ user.department }}</li>
-            </ul>
+<h2>Active User</h2>
+<ul>
+    <!-- Optional attribute: Student ID is not required for access control -->
+    <li><strong>Student ID:</strong> {{ user.student_id }}</li>
+    
+
+    <li><strong>Name:</strong> {{ user.full_name }}</li>
+    <li><strong>Username:</strong> {{ user.username }}</li>
+    <li><strong>Role:</strong> {{ user.role }}</li>
+    <li><strong>Department:</strong> {{ user.department }}</li>
+
+    <!-- Optional attribute: Student ID is included for academic record tracking and is not required for access control decisions -->
+<li><strong>Student ID:</strong> {{ user.student_id }}</li>
+</ul>
         </div>
 
         <div class="success">
