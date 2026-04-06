@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from data import load_users
-from authorization import role_required, department_required
+from authorization import role_required, department_required, business_hours_required
 
 app = Flask(__name__)
 
@@ -43,6 +43,8 @@ def admin():
     if not role_required(current_user, ["admin"]):
         return render_template("access_denied.html")
     if not department_required(current_user, ["it-security"]):
+        return render_template("access_denied.html")
+    if not business_hours_required():
         return render_template("access_denied.html")
     return render_template("admin.html", user=current_user)
 
