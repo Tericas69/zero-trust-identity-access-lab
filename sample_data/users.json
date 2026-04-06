@@ -1,11 +1,12 @@
 [
   {
-    "id": 1,
-    "username": "student1",
-    "full_name": "Student User",
-    "role": "student",
-    "department": "academics"
-  },
+  "id": 1,
+  "username": "student1",
+  "full_name": "Student User",
+  "role": "student",
+  "department": "academics",
+  "student_id": "S-1001"
+},
   {
     "id": 2,
     "username": "staff1",
