@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from data import load_users
 from authorization import role_required, department_required, business_hours_required
+from audit import log_event
 
 app = Flask(__name__)
 
@@ -23,7 +24,9 @@ def home():
 def student():
     current_user = get_user_by_username("student1")
     if not role_required(current_user, ["student"]):
+        log_event(current_user["username"], "student_dashboard", "denied")
         return render_template("access_denied.html")
+    log_event(current_user["username"], "student_dashboard", "allowed")
     return render_template("student.html", user=current_user)
 
 
@@ -31,9 +34,12 @@ def student():
 def staff():
     current_user = get_user_by_username("staff1")
     if not role_required(current_user, ["staff", "admin"]):
+        log_event(current_user["username"], "staff_dashboard", "denied")
         return render_template("access_denied.html")
     if not department_required(current_user, ["registrar"]):
+        log_event(current_user["username"], "staff_dashboard", "denied")
         return render_template("access_denied.html")
+    log_event(current_user["username"], "staff_dashboard", "allowed")
     return render_template("staff.html", user=current_user)
 
 
@@ -41,11 +47,15 @@ def staff():
 def admin():
     current_user = get_user_by_username("admin1")
     if not role_required(current_user, ["admin"]):
+        log_event(current_user["username"], "admin_dashboard", "denied")
         return render_template("access_denied.html")
     if not department_required(current_user, ["it-security"]):
+        log_event(current_user["username"], "admin_dashboard", "denied")
         return render_template("access_denied.html")
     if not business_hours_required():
+        log_event(current_user["username"], "admin_dashboard", "denied")
         return render_template("access_denied.html")
+    log_event(current_user["username"], "admin_dashboard", "allowed")
     return render_template("admin.html", user=current_user)
 
 
