@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "student1",
+    "full_name": "Student User",
+    "role": "student",
+    "department": "academics"
+  },
+  {
+    "id": 2,
+    "username": "staff1",
+    "full_name": "Staff User",
+    "role": "staff",
+    "department": "registrar"
+  },
+  {
+    "id": 3,
+    "username": "admin1",
+    "full_name": "Admin User",
+    "role": "admin",
+    "department": "it-security"
+  }
+]
