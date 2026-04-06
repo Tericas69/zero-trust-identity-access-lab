@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Denied</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Access Denied</h1>
-    <p>You do not have permission to view this page.</p>
-    <a href="/">Return to Home</a>
+    <div class="container">
+        <h1>Access Denied</h1>
+        <div class="note denied">
+            You do not have permission to view this page. Too many attempts will cause a lockout function!
+        </div>
+
+        <div class="section">
+            <a href="/">Return to Home</a>
+        </div>
+    </div>
 </body>
 </html>
